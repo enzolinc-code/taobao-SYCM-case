@@ -1,0 +1,21 @@
+# 采集到的数据与出图（体积大，且是本地经营数据，不要提交）
+# 注意：忽略 data 里的内容，但保留 data/.gitkeep，这样 clone 下来目录还在
+data/*
+!data/.gitkeep
+out/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

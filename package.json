@@ -1,0 +1,18 @@
+{
+  "name": "sycm-phonecase-finder",
+  "version": "1.0.0",
+  "description": "生意参谋手机壳类目找款：走页面交互采集市场排行，出带编号的大缩略图汇总并按当天支付买家数分档",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "tabs": "node tools/cdp.mjs tabs",
+    "snapshot": "node tools/sycm-table.mjs market_rank data/榜单快照",
+    "collect:gmv": "node tools/collect-pages.mjs --tab market_rank --pages 10 --reset --tag 交易总量 --out data/采集-实时-交易总量.jsonl",
+    "collect:growth": "node tools/collect-pages.mjs --tab market_rank --pages 10 --reset --tag 交易增速 --out data/采集-实时-交易增速.jsonl",
+    "sheet:gmv": "python tools/sheets-from-jsonl.py --jsonl data/采集-实时-交易总量.jsonl --out-dir data/汇总图/交易总量 --tag 交易总量",
+    "sheet:growth": "python tools/sheets-from-jsonl.py --jsonl data/采集-实时-交易增速.jsonl --out-dir data/汇总图/交易增速 --tag 交易增速",
+    "filter": "node tools/filter-feilin.mjs data/采集-实时-交易总量.jsonl data/筛选/候选"
+  },
+  "license": "MIT"
+}
